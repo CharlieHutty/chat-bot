@@ -17,6 +17,6 @@ class HomePageController extends AbstractController
 	public function home(): Response
 	{
         dump($this->destination->fetch());
-		return $this->render('test.html.twig');
+		return $this->render('home.html.twig');
 	}
 }
