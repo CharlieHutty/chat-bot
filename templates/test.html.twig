@@ -1,1 +1,8 @@
-<h1>Hello, world!</h1>
+{% extends 'base.html.twig' %}
+    {% block title %}Test!{% endblock %}
+    {% block stylesheets %}
+        {{ parent() }}
+    {% endblock %}
+
+    {% block javascripts %}{% endblock %}
+    {% block content %}<h1>Hello, world</h1>{% endblock %}
