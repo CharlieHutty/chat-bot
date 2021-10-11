@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+    {% block title %}Test!{% endblock %}
+    {% block stylesheets %}
+        {{ parent() }}
+    {% endblock %}
+    {% block content %}
+        <h1>Hello, world</h1>
+        <select name="category" id="category-drop-down">
+            <option value="lazy">Lazy</option>
+            <option value="active">Active</option>
+        </select>
+    {% endblock %}
+    {% block javascripts %}
+        <script src="{{ asset('js/main.js') }}"></script>
+
+    {% endblock %}
