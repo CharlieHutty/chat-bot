@@ -1,3 +1,7 @@
 index:
     path: /
     controller: App\Controller\HomePageController::home
+
+ajax:
+    path: ajax.json
+    controller: App\Controller\AjaxController::ajaxRequest

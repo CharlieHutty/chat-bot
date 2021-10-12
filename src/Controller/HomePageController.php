@@ -3,20 +3,12 @@ namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
-use App\Database\Destination;
+use Symfony\Component\HttpFoundation\Request;
 
 class HomePageController extends AbstractController
 {
-    private Destination $destination;
-
-    public function __construct(Destination $destination)
-    {
-        $this->destination = $destination;
-    }
-
-	public function home(): Response
+	public function home(Request $request): Response
 	{
-        dump($this->destination->fetch());
-		return $this->render('home.html.twig');
+        return $this->render('home.html.twig');
 	}
 }

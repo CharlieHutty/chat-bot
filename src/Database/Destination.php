@@ -25,11 +25,16 @@ class Destination
         $this->connection = $connection;
     }
 
-    public function fetch(): array
+    public function fetch($category = null, $location = null): array
     {
         $query = $this->connection->createQueryBuilder();
         $query->select('*')
-            ->from(self::TABLE_DESTINATION);
+            ->from(self::TABLE_DESTINATION)
+            ->where(self::COLUMN_CATEGORY . '= :category')
+            ->andWhere(self::COLUMN_LOCATION . '= :location')
+            ->setParameter('category', $category)
+            ->setParameter('location', $location)
+            ->execute();
         $destinationArray = [];
         foreach ($query->execute()->iterateAssociative() as $destination) {
             $destinationArray[] = $this->toValueObject($destination);
