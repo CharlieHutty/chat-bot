@@ -1,49 +1,38 @@
-let holidayCategoryNode = document.getElementById("holiday-category");
-let holidayLocationNode = document.getElementById("holiday-location");
+// import {getUserHolidayCategory} from "./modules/getUserHolidayCategory.js";
+import {loadDoc} from "./modules/loadDoc.js";
+import {getUserName} from "./modules/getUserName.js";
 
-let lazyCategory = holidayCategoryNode.children[0];
-let activeCategory = holidayCategoryNode.children[1];
-let mountainLocation = holidayLocationNode.children[0];
-let cityLocation = holidayLocationNode.children[1];
-let seaLocation = holidayLocationNode.children[2];
+export function main() {
 
-let holidayCategory = '';
-let holidayLocation = '';
+    let userNameBtn = document.querySelector('form');
+    userNameBtn.addEventListener('click', function (event) {
+        getUserName();
+    })
 
-lazyCategory.onclick = function () {
-    holidayCategory = 'Lazy';
-    showAnswers();
-};
+    let chosenCategoryAndLocation = [];
 
-activeCategory.onclick = function () {
-    holidayCategory = 'Active';
-    showAnswers();
-};
+    let holidayCategory = document.querySelector('.holiday-category');
+    let holidayLocation = document.querySelector('.holiday-location');
 
-mountainLocation.onclick = function () {
-    holidayLocation = 'Mountain'
-    showAnswers();
-}
+    holidayCategory.addEventListener('click', function(event) {
+        if (chosenCategoryAndLocation.length < 1) {
+            chosenCategoryAndLocation.push(event.target.id);
+        } else {
+            chosenCategoryAndLocation = [];
+        }
+    }, false);
 
-cityLocation.onclick = function () {
-    holidayLocation = 'City'
-    showAnswers();
-}
+    holidayLocation.addEventListener('click', function (event) {
+        if (chosenCategoryAndLocation.length < 2) {
+            chosenCategoryAndLocation.push(event.target.id);
+        } else {
+            chosenCategoryAndLocation = [];
+        }
+    })
 
-seaLocation.onclick = function () {
-    holidayLocation = 'Sea'
-    showAnswers();
-}
+    let buttonForResults = document.querySelector('#results-btn');
+    buttonForResults.addEventListener('click', function (event) {
+        loadDoc(chosenCategoryAndLocation[1], chosenCategoryAndLocation[0]);
+    })
 
-function showAnswers() {
-    document.getElementById('answers').innerHTML = holidayLocation + holidayCategory
-}
-
-function showRecords(location, category) {
-    const xhttp = new XMLHttpRequest();
-    xhttp.onload = function () {
-        document.getElementById("txtHint").innerHTML = this.responseText;
-    }
-    xhttp.open("GET", "ajax.php?q="+location,category);
-    xhttp.send();
 }

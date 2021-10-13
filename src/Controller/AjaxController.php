@@ -6,6 +6,7 @@ use App\Database\Destination;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 class AjaxController extends AbstractController
 {
@@ -21,6 +22,8 @@ class AjaxController extends AbstractController
         $category = $request->get('category');
         $location = $request->get('location');
         $data = $this->destination->fetch($category, $location);
-        return new JsonResponse($data);
+        return new JsonResponse(
+            json_encode($data)
+        );
     }
 }

@@ -5,3 +5,7 @@ index:
 ajax:
     path: ajax.json
     controller: App\Controller\AjaxController::ajaxRequest
+
+user-name:
+    path: user-name.php
+    controller: App\Controller\UserDetailsController::getUserName
