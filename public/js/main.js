@@ -24,13 +24,9 @@ export function main() {
     holidayLocation.addEventListener('click', function (event) {
         if (chosenCategoryAndLocation.length < 2) {
             chosenCategoryAndLocation.push(event.target.id);
+            loadDoc(chosenCategoryAndLocation[1], chosenCategoryAndLocation[0])
         } else {
             chosenCategoryAndLocation = [];
         }
-    })
-
-    let buttonForResults = document.querySelector('#results-btn');
-    buttonForResults.addEventListener('click', function (event) {
-        loadDoc(chosenCategoryAndLocation[1], chosenCategoryAndLocation[0]);
     })
 }

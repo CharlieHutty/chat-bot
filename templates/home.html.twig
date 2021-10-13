@@ -1,6 +1,9 @@
 {% extends 'base.html.twig' %}
     {% block title %}Test!{% endblock %}
     {% block stylesheets %}
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/speech-bubbles.css') }}"/>
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/text-input-animation.css') }}"/>
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/table.css') }}"/>
         {{ parent() }}
     {% endblock %}
     {% block content %}
@@ -10,14 +13,23 @@
                 <p>Hello, what is your name?</p>
             </div>
             <div class="user-input-loaded box-user-answer sb2">
-                <form>
-                    <input type="text" name="user-name" id="user-name">
-                    <input name="submit" type="submit" onclick="showHideDiv('second-bot-questions')">
-                </form>
+                <div class="wrapper">
+                    <div class="box-wrapper">
+                        <div class="box">
+                            <form id="form" action="">
+                                <div>
+                                    <input type="text" name="user-name" id="name" required placeholder=" ">
+                                    <label>Name: </label>
+                                </div>
+                                <input id="submit" type="submit" value="Submit" onclick="showHideDiv('second-bot-questions')">
+                            </form>
+                        </div>
+                    </div>
+                </div>
             </div>
             </div>
             <div id="second-bot-questions" style="display: none">
-                <div class="bot-questions box-bot-question sb1 target">
+                <div class="bot-questions box-bot-question sb1">
                     <p id="user-name"></p>
                 </div>
                 <div class="user-input box-user-answer sb2">
@@ -40,7 +52,6 @@
             </div>
             </div>
         <div id="results" class="bot-questions box-bot-question sb1" style="display: none">
-            <button id="results-btn" type="button">Get Results</button>
         </div>
     {% endblock %}
     {% block javascripts %}
@@ -53,7 +64,7 @@
             function showHideDiv(ele) {
                 var srcElement = document.getElementById(ele);
                 if (srcElement != null) {
-                    if (srcElement.style.display == "block") {
+                    if (srcElement.style.display === "block") {
                         srcElement.style.display = 'none';
                     }
                     else {

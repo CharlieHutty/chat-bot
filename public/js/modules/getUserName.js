@@ -9,7 +9,6 @@ export function getUserName() {
                 data: $('form').serialize(),
                 success: function (response) {
                     let div = document.createElement('div');
-                    div.className = 'user-input box sb1';
                     let tag = document.createElement("p");
                     let text = document.createTextNode('Hello, ' + response + ' what category of Holiday would you like?');
                     tag.appendChild(text);
