@@ -1,4 +1,3 @@
-// import {getUserHolidayCategory} from "./modules/getUserHolidayCategory.js";
 import {loadDoc} from "./modules/loadDoc.js";
 import {getUserName} from "./modules/getUserName.js";
 
@@ -34,5 +33,4 @@ export function main() {
     buttonForResults.addEventListener('click', function (event) {
         loadDoc(chosenCategoryAndLocation[1], chosenCategoryAndLocation[0]);
     })
-
 }

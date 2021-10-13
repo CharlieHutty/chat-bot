@@ -5,54 +5,62 @@
     {% endblock %}
     {% block content %}
         <h1>First Holiday Ltd</h1>
-
         <div class="chat-bot">
-            <div class="bot-questions-loaded">
+            <div class="bot-questions-loaded box-bot-question sb1">
                 <p>Hello, what is your name?</p>
             </div>
-            <div class="user-input-loaded">
+            <div class="user-input-loaded box-user-answer sb2">
                 <form>
                     <input type="text" name="user-name" id="user-name">
-                    <input name="submit" type="submit">
+                    <input name="submit" type="submit" onclick="showHideDiv('second-bot-questions')">
                 </form>
             </div>
-            <div>
-                <div class="bot-questions">
+            </div>
+            <div id="second-bot-questions" style="display: none">
+                <div class="bot-questions box-bot-question sb1 target">
                     <p id="user-name"></p>
                 </div>
-                <div class="user-input">
-                    <div class="list-group holiday-category" id="holiday-category">
+                <div class="user-input box-user-answer sb2">
+                    <div class="list-group holiday-category" id="holiday-category" onclick="showHideDiv('bot-third-question')">
                         <a class="list-group-item list-group-item-action" id="lazy">Lazy</a>
                         <a class="list-group-item list-group-item-action" id="active">Active</a>
                     </div>
                 </div>
             </div>
-            <div>
-                <div class="bot-questions">
-                    <p>Good choice, what about the location?</p>
-                </div>
-                <div class="user-input">
-                    <div class="list-group holiday-location" id="holiday-location">
-                        <a class="list-group-item list-group-item-action" id="mountain">Mountain</a>
-                        <a class="list-group-item list-group-item-action" id="city">City</a>
-                        <a class="list-group-item list-group-item-action" id="sea">Sea</a>
-                    </div>
+            <div id="bot-third-question" style="display: none">
+            <div class="bot-questions box-bot-question sb1">
+                <p>Good choice, what about the location?</p>
+            </div>
+            <div class="user-input box-user-answer sb2">
+                <div class="list-group holiday-location" id="holiday-location" onclick="showHideDiv('results')">
+                    <a class="list-group-item list-group-item-action" id="mountain">Mountain</a>
+                    <a class="list-group-item list-group-item-action" id="city">City</a>
+                    <a class="list-group-item list-group-item-action" id="sea">Sea</a>
                 </div>
             </div>
-        </div>
-        <p id="answers"></p>
-
-        <div id="txtHint">Destination info will be listed here...</div>
-
-        <div id="results">
+            </div>
+        <div id="results" class="bot-questions box-bot-question sb1" style="display: none">
             <button id="results-btn" type="button">Get Results</button>
         </div>
-        <div id="demoA"></div>
     {% endblock %}
     {% block javascripts %}
         <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
         <script type="module">
             import {main} from "/js/main.js";
             main();
+        </script>
+        <script>
+            function showHideDiv(ele) {
+                var srcElement = document.getElementById(ele);
+                if (srcElement != null) {
+                    if (srcElement.style.display == "block") {
+                        srcElement.style.display = 'none';
+                    }
+                    else {
+                        srcElement.style.display = 'block';
+                    }
+                    return false;
+                }
+            }
         </script>
     {% endblock %}

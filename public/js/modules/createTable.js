@@ -1,4 +1,6 @@
 export function createTable(data) {
+    let div = document.createElement('div')
+    div.className = 'bot-questions box sb1';
     let table = document.createElement("table"), row, holidayReference, hotelName, city, continent, country,
         category, rating, temp_rating, location, pricePerNight;
     let headerRow = document.createElement("tr");
