@@ -63,6 +63,9 @@
         <script>
             function showHideDiv(ele) {
                 var srcElement = document.getElementById(ele);
+                $(srcElement).animate({
+                    scrollTop: srcElement.scrollHeight - srcElement.clientHeight
+                }, 500);
                 if (srcElement != null) {
                     if (srcElement.style.display === "block") {
                         srcElement.style.display = 'none';

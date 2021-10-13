@@ -13,6 +13,7 @@ export function loadDoc(holidayLocation, holidayCategory) {
                 let data = response;
                 data = JSON.parse(data);
                 createTable(data);
+                window.scrollBy(0, 500);
             }
         })
     })

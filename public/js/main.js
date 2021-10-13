@@ -6,6 +6,7 @@ export function main() {
     let userNameBtn = document.querySelector('form');
     userNameBtn.addEventListener('click', function (event) {
         getUserName();
+        window.scrollBy(0, 200);
     })
 
     let chosenCategoryAndLocation = [];
@@ -16,6 +17,7 @@ export function main() {
     holidayCategory.addEventListener('click', function(event) {
         if (chosenCategoryAndLocation.length < 1) {
             chosenCategoryAndLocation.push(event.target.id);
+            window.scrollBy(0, 350);
         } else {
             chosenCategoryAndLocation = [];
         }
