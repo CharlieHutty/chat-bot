@@ -1,5 +1,4 @@
 {% extends 'base.html.twig' %}
-    {% block title %}Test!{% endblock %}
     {% block stylesheets %}
         <link rel="stylesheet" type="text/css" href="{{ asset('css/speech-bubbles.css') }}"/>
         <link rel="stylesheet" type="text/css" href="{{ asset('css/text-input-animation.css') }}"/>
@@ -7,7 +6,6 @@
         {{ parent() }}
     {% endblock %}
     {% block content %}
-        <h1>First Holiday Ltd</h1>
         <div class="chat-bot">
             <div class="bot-questions-loaded box-bot-question sb1">
                 <p>Hello, what is your name?</p>
@@ -55,13 +53,16 @@
         </div>
     {% endblock %}
     {% block javascripts %}
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+        <script
+                src="https://code.jquery.com/jquery-3.6.0.js"
+                integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+                crossorigin="anonymous"></script>
         <script type="module">
             import {main} from "/js/main.js";
             main();
         </script>
         <script>
-            function showHideDiv(ele) {
+        function showHideDiv(ele) {
                 var srcElement = document.getElementById(ele);
                 $(srcElement).animate({
                     scrollTop: srcElement.scrollHeight - srcElement.clientHeight
