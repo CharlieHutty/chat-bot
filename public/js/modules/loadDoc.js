@@ -9,8 +9,7 @@ export function loadDoc(holidayLocation, holidayCategory) {
                 category: holidayCategory.toLowerCase(),
                 location: holidayLocation.toLowerCase()
             },
-            success: function (response) {
-                let data = response;
+            success: function (data) {
                 data = JSON.parse(data);
                 createTable(data);
                 window.scrollBy(0, 500);
